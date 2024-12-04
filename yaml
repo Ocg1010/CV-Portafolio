@@ -1,0 +1,93 @@
+logs:
+#TRACE
+  #ASM
+  - type: file
+    path: /u01/app/grid_base/diag/asm/+asm/+ASM2/trace/alert*.log 
+    service: ORACLEDB-ASM-nodo2
+    source: oracle-asm-trace-nodo2
+    log_processing_rules:
+      - type: include_at_match
+        name: error_filter
+        pattern: "ORA-"
+  #CRC
+  - type: file
+    path: /u01/app/grid_base/diag/crs/shcoxorc02/crs/trace/alert*.log
+    service: ORACLEDB-CRC-nodo2
+    source: oracle-crc-trace-nodo2
+    log_processing_rules:
+      - type: include_at_match
+        name: error_filter
+        pattern: "ORA-"
+
+  #RDBMS
+  - type: file
+    path: /u01/app/oracle/diag/rdbms/*/*/trace/alert*.log 
+    service: ORACLEDB-RDBMS-nodo2
+    source: oracle-rdbms-trace-nodo2
+    log_processing_rules:
+      - type: include_at_match
+        name: error_filter
+        pattern: "ORA-"
+
+#ALERT
+  #ASM
+  - type: file
+    path: /u01/app/grid_base/diag/asm/+asm/+ASM2/alert/log.xml
+    service: ORACLEDB-ASM-nodo2
+    source: oracle-asm-alert-nodo2
+    log_processing_rules:
+      - type: include_at_match
+        name: error_filter
+        pattern: "ORA-|ERROR"
+
+  # CRS
+  - type: file
+    path: /u01/app/grid_base/diag/crs/shcoxorc02/crs/alert/log.xml
+    service: ORACLEDB-CRS-nodo2
+    source: oracle-crs-alert-nodo2 
+    log_processing_rules:
+      - type: include_at_match
+        name: error_filter
+        pattern: "ORA-|ERROR"
+
+  #RDBMS
+  - type: file
+    path: /u01/app/oracle/diag/rdbms/*/*/alert/log.xml 
+    service: ORACLEDB-RDBMS-nodo2
+    source: oracle-rdbms-alert-nodo2
+    log_processing_rules:
+      - type: include_at_match
+        name: error_filter
+        pattern: "ORA-|ERROR"
+
+
+#LOG
+  #ASM
+  - type: file
+    path: /u01/app/grid_base/diag/asm/+asm/+ASM2/log/*.log 
+    service: ORACLEDB-ASM-nodo2
+    source: oracle-rdbms-log-nodo2
+    log_processing_rules:
+      - type: include_at_match
+        name: error_filter
+        pattern: "ORA-|ERROR"
+
+  # CRS
+  - type: file
+    path: /u01/app/grid_base/diag/crs/shcoxorc02/crs/log/*.log
+    service: ORACLEDB-CRS-nodo2
+    source: oracle-crs-log-nodo2
+    log_processing_rules:
+      - type: include_at_match
+        name: error_filter
+        pattern: "ORA-|ERROR"
+
+  #RDBMS
+  - type: file
+    path: /u01/app/oracle/diag/rdbms/*/*/log/*.log
+    service: ORACLEDB-CRS-nodo2 
+    source: oracle-crs-log-nodo2
+    log_processing_rules:
+      - type: include_at_match
+        name: error_filter
+        pattern: "ORA-|ERROR"
